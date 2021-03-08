@@ -1,0 +1,21 @@
+/* core */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    width: 100%;
+    margin: 0 auto;
+}
+body{
+font-family: 'Roboto', sans-serif, 'Times New Roman', Times, serif !important;
+    line-height: 1.6em;
+}
+
+/* header */
+header{
+    text-align: center;
+    padding: 3rem 0;
+}
