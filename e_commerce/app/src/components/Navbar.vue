@@ -24,7 +24,7 @@
           <!-- navbar list item -->
           <li class="nav-item me-2 d-flex navbar-links" v-if="!loggedIn">
             <router-link to="/Products" class="nav-link bg-primary text-dark rounded px-4 me-2" >Products</router-link>
-            <router-link to="/SignIn" class="nav-link bg-light text-dark rounded px-4 me-2">Log In</router-link>
+            <router-link to="/SignIn" class="nav-link bg-light text-dark rounded px-4 me-2">Sign In</router-link>
             <router-link to="/About" class="nav-link bg-info text-dark rounded px-4">About</router-link>
           </li>
 
@@ -33,20 +33,30 @@
             <i class="fas fa-user"></i>
             <router-link class="nav-link text-dark" aria-current="page" to="/user">Settings</router-link>
           </li>
-
+          
           <!-- navbar list item -->
           <li class="nav-item">
             <div class="input-group">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-success text-white px-3 input-group-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              <button type="button" class="btn btn-success text-white px-3 input-group-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <span>Cart</span>
                 <i class="fas fa-shopping-cart px-1"></i>
-              </button>
-              <div class="collapse cart-open" id="collapseExample">
-                <div class="card card-body">
-                  <ShoppingCart />
+                <span class="border rounded bg-light text-dark px-2 mx-1">{{shoppingCart.length}}</span>
+              </button>              
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">My Cart</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <ShoppingCart />
+                    </div>
+                  </div>
                 </div>
-              </div>
+            </div>
+
             </div>
           </li>
 
@@ -64,11 +74,12 @@
 import { mapGetters } from 'vuex'
 import ShoppingCart from './shoppingCart/ShoppingCart'
 export default {
+  props: ['item'],
   components: {
-    ShoppingCart
+    ShoppingCart,
   },
   computed: {
-    ...mapGetters(['loggedIn'])
+    ...mapGetters(['shoppingCart', 'loggedIn'])
   }
   // data() {
   //   return {

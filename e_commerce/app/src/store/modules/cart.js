@@ -19,11 +19,9 @@ export default {
     ADD_TO_CART: (state, { product, quantity }) => {
       let exists = state.cart.find(item => item.product._id === product._id)
       if(exists) {
-        console.log(quantity)
         exists.quantity += quantity
         return
       }
-
       state.cart.push({ product, quantity })
     }
   },

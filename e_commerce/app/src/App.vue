@@ -11,6 +11,10 @@
       </div>
     </section>
     
+    <footer class=" text-center bg-light py-5">
+      &copy; 2021
+    </footer>
+
   </div>
 
 </template>

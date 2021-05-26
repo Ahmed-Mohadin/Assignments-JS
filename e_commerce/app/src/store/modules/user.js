@@ -1,5 +1,5 @@
-import axios from '@/axios'
-import router from '@/router'
+import axios from '../../axios'
+import router from '../../router'
 
 export default {
   state: {
@@ -18,26 +18,22 @@ export default {
   },
   actions: {
     register: async ({dispatch}, _user) => {
-      await axios.post('users/register', _user)
+      await axios.post('user/signup', _user)
       const user = {
         email: _user.email,
         password: _user.password
       }
       dispatch('login', user)
     },
-    login: ({commit}, {user, route}) => {
-      axios.post('users/login', user)
+    login: ({commit}, {_user}) => {
+      axios.post('user/signin', _user)
       .then(res => {
         if(res.status === 200) {
           commit('LOGIN_USER')
-
-          if(route) {
-            router.push(route)
-          } else {
-            router.push('/')
-          }
+          router.push('/')
         }
       })
+      .catch((err) => console.log(err))
     },
     logout: ({commit}) => {
       commit('LOGOUT_USER')

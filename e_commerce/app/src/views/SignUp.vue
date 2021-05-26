@@ -36,10 +36,13 @@
         </p>
 
         <!-- submit button -->
-        <div class="col-8 mx-auto d-grid">
+        <div class="col-8 mb-3 mx-auto d-grid">
             <button type="submit" class="btn btn-outline-dark btn-large py-2">Sign Up</button>
         </div>
-    
+
+        <div class="col-8 mx-auto mb-3" v-if="errors.length">
+          <span v-for="error in errors" v-bind:key="error">{{ error }},</span>
+        </div>
     </form>
 
 </template>
@@ -54,13 +57,23 @@ export default {
         lastName: '',
         email: '',
         password: ''
-      }
-
+      },
+      errors: []
     }
   },
   methods: {
     ...mapActions(['register']),
     onSub() {
+      this.errors = []
+      if(this.user.firstName === '' || this.user.lastName === ''){
+        this.errors.push('First or last name is missing')
+      }
+      else if(this.user.email === ''){
+        this.errors.push('Email address is missing')
+      }
+      else if(this.user.password.length < 8){
+        this.errors.push('Password is too short')
+      }
       if(this.user.firstName !== '' && this.user.lastName !== '' && this.user.email !== '' && this.user.password !== '') {
         this.register(this.user)
       }

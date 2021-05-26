@@ -11,13 +11,8 @@
           <div><small>{{ item.quantity }} x {{ item.product.price }}</small></div>
         </div>
       </div>
-
       <div>
-        <div class="btn-group btn-group-sm me-2" role="group">
-          <button class="btn btn-dark" @click.stop="">-</button>
-          <button class="btn btn-dark" @click.stop="">+</button>
-        </div>
-        <button class="btn btn-danger btn-sm" @click.stop=""><i class="fas fa-trash"></i></button>
+        <button class="btn btn-danger btn-sm"  @click.stop=""><i class="fas fa-trash"></i></button>
       </div>
     </div>
 

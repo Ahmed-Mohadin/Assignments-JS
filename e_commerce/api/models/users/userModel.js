@@ -3,7 +3,7 @@ const User = require('../users/userSchema');
 const bcrypt = require('bcrypt');
 const auth = require('../../auth/auth');
 
-exports.registerUser = (req, res) => {
+exports.signUpUser = (req, res) => {
 
   User.exists({ email: req.body.email }, (err, result) => {
     if(err) {
@@ -63,7 +63,7 @@ exports.registerUser = (req, res) => {
   })
 }
 
-exports.loginUser = (req, res) => {
+exports.signInUser = (req, res) => {
 
   User.findOne({ email: req.body.email })
     .then(user => {

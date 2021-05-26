@@ -12,7 +12,6 @@
       <div class="dropdown-divider"></div>
     </div>
     
-    <div class="dropdown-divider"></div>
 
    <!-- total cost -->
     <div class="p-2 d-flex justify-content-between align-items-center">
@@ -31,7 +30,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import ShoppingCartProduct from './ShoppingCartProduct'
+import ShoppingCartProduct from '../components/shoppingCart/ShoppingCartProduct'
 export default {
   name: 'ShoppingCart',
   components: {
@@ -44,8 +43,5 @@ export default {
 </script>
 
 <style scoped>
-  .my-cart{
-    height: 25rem;
-    overflow-y: scroll;
-  }
+  
 </style>
